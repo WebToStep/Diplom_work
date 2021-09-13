@@ -1,0 +1,1 @@
+!function(){console.log("ku");var o=document.querySelector("body");console.log(o),console.log("1111111111111111"),console.log(111),console.log(222)}();
