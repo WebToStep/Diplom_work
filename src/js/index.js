@@ -6,12 +6,16 @@ const headerModal = document.querySelector('.header-modal');
 
 // делигирование
 document.addEventListener('click', event => {
-    event.preventDefault();
     const target = event.target;
     // открытие модалки
-    if (target.classList.contains('fancyboxModal'))openModal([overlay, headerModal]);
+    if (target.classList.contains('fancyboxModal')) {
+        event.preventDefault();
+        openModal([overlay, headerModal]);
+    }
     //  закрытие модалки
     if (target.classList.contains('overlay') ||
-    target.classList.contains('header-modal__close'))closeModal([overlay, headerModal]);
+        target.classList.contains('header-modal__close')) {
+        closeModal([overlay, headerModal]);
+    }
 });
 
