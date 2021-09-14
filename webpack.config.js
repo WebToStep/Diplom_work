@@ -1,116 +1,106 @@
-// const path = require('path');
-// const HTMLWebpackPlugin = require('html-webpack-plugin');
-
-// const mode = process.env.NODE_ENV;
-// const isDev = mode === 'development';
-// const generateFilename = ext => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
-
-// module.exports = {
-//     entry: {
-//         main: './js/index.js',
-//     },
-//     output: {
-//         filename: generateFilename('js'),
-//         path: path.resolve(__dirname, 'build'),
-//         clean: true,
-//         environment: {
-//             arrowFunction: false,
-//         }
-//     },
-//     mode,
-//     context: path.resolve(__dirname, 'src'),
-//     plugins: [
-//         new HTMLWebpackPlugin({
-//             template: './index.html'
-//         })
-//     ],
-//     module: {
-//         rules: [
-//             {
-//                 test: /\.js$/i,
-//                 exclude: /node_modules/,
-//                 use: {
-//                     loader: 'babel-loader',
-//                     options: {
-//                         presets: ['@babel/preset-env']
-//                     }
-//                 }
-//             },
-//             {
-//                 test: /\.css$/i,
-//                 use: ['style-loader', 'css-loader']
-//             },
-//             {
-//                 test: /\.(png|jpg|jpeg|svg|gif)$/i,
-//                 use: ['file-loader']
-//             },
-//             {
-//                 test: /\.(woff|woff2)$/i,
-//                 use: ['file-loader']
-//             }
-//         ]
-//     },
-//     devServer: {
-//         static: './build',
-//         open: true,
-//     }
-// };
+/* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+/* eslint-disable indent */
 const path = require('path');
-const HTMLPlugin = require('html-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
+
+const filename = ext => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`);
 
 module.exports = {
-    entry: './src/js/index.js',
-    output: {
-        filename: 'bundle.[chunkhash].js',
-        path: path.resolve(__dirname, 'public'),
-        clean: true,
-        environment: {
-            arrowFunction: false,
-        }
-    },
-    devServer: {
-        open: true,
-        port: 3000,
-        static: './src',
-        hot: true,
-    },
-    plugins: [
-        new HTMLPlugin({
-            filename: 'index.html',
-            template: './src/index.html'
-        }),
-        new HTMLPlugin({
-            filename: 'balkony.html',
-            template: './src/balkony.html',
-        }),
-        new HTMLPlugin({
-            filename: 'kuhni.html',
-            template: './src/kuhni.html',
-        })
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                //  исключаем из бандла
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    },
-                },
-            }
-        ]
-    }
-    // module: {
-    //    rules: [
-    //      {
-    //        test: /\.css$/i,
-    //        use: ["css-loader"],
-    //      },
-    //    ],
-    //  },
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+  entry: './js/index.js',
+  output: {
+    filename: `js/${filename('js')}`,
+    path: path.resolve(__dirname, 'app'),
+    publicPath: ''
+  },
+  stats: {
+    children: true,
+    chunks: true,
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'app'),
+    open: true,
+    hot: true,
+    compress: true,
+    port: 3000,
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/index.html'),
+      filename: 'index.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/balkony.html'),
+      filename: 'balkony.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/kuhni.html'),
+      filename: 'kuhni.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new CleanWebpackPlugin(),
+    // new MiniCssExtractPlugin({
+    //   filename: `./css/${filename('css')}`,
+    // }),
 
-    //  npm run start
+    // при наличие assets копируем
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/fonts'), to: path.resolve(__dirname, 'app/fonts') }
+      ]
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/images'), to: path.resolve(__dirname, 'app/images') }
+      ]
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/css'), to: path.resolve(__dirname, 'app/css') }
+      ]
+    }),
+  ],
+  // module: {
+  //   rules: [
+  //     // {
+  //     //   test: /\.html$/,
+  //     //   loader: 'html-loader',
+  //     // },
+  //     // {
+  //     //   test: /\.css$/i,
+  //     //   use: [
+  //     //     MiniCssExtractPlugin.loader, "css-loader"],
+  //     // },
+  //     // {
+  //     //   test: /\.s[as]ss$/i,
+  //     //   use: [MiniCssExtractPlugin.loader, "css-loader"],
+  //     // },
+  //     // {
+  //     //   test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
+  //     //   use: [{
+  //     //     loader: 'file-loader',
+  //     //     options: {
+  //     //       name: '[path][name].[ext]'
+  //     //     }
+  //     //   }],
+  //     // },
+  //   ],
+  // },
 };

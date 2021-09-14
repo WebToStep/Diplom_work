@@ -1,3 +1,11 @@
+// import '../css/style.css';
+// import '../css/animate.css';
+// import '../css/bootstrap.min.css';
+// import '../fonts/font.css';
+// import '../index.html';
+// import '../balkony.html';
+// import '../kuhni.html';
+
 import { closeModal, openModal } from './modal/modal';
 import { pageScroll, scrollHide } from './pageScroll/pageScroll';
 
@@ -54,4 +62,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
