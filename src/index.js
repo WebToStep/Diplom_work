@@ -1,5 +1,5 @@
-import { closeModal, openModal } from './modal/modal';
-import { pageScroll, scrollHide } from './pageScroll/pageScroll';
+import { closeModal, openModal } from './modules/modal';
+import { pageScroll, scrollHide } from './modules/pageScroll';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -41,4 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+console.log('ku');
 
