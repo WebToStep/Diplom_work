@@ -1,3 +1,4 @@
+// необходимо для дороботок webpack
 // import '../css/style.css';
 // import '../css/animate.css';
 // import '../css/bootstrap.min.css';
@@ -8,6 +9,7 @@
 
 import { closeModal, openModal } from './modal/modal';
 import { pageScroll, scrollHide } from './pageScroll/pageScroll';
+import { countTimer, addDays } from './timer/timer';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -17,6 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // вызов функций
     scrollHide('none');
+    // Timer
+    // if new client set localStorage timer
+    if (localStorage.startTimer === undefined) {
+        // вместо еденицы нужно передать срок дней акции после того как клиент зашел на сайт
+        localStorage.startTimer = addDays(new Date(), 3);
+        countTimer(localStorage.startTimer);
+    } else {
+        countTimer(localStorage.startTimer);
+    }
 
     // делигирование
     document.addEventListener('click', event => {

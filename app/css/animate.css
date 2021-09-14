@@ -2742,3 +2742,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-animation-name: rollOut;
   animation-name: rollOut;
 }
+
+
+/* show and hide elevents for JS */
+.hidden_block {
+  display: none;
+}
+
+.show_block {
+  display: block;
+  animation: showBlock 0.2s linear forwards;
+}
+
+@keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
