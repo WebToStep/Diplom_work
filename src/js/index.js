@@ -18,4 +18,3 @@ document.addEventListener('click', event => {
         closeModal([overlay, headerModal]);
     }
 });
-
