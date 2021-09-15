@@ -13,6 +13,7 @@ import { countTimer, addDays } from '../js/timer/timer';
 import { calc } from '../js/calc/calc';
 import { sendForm } from '../js/sendForm/sendForm';
 import { maskPhone } from '../js/plugins/maskPhone';
+import { showImage } from '../js/showImage/showImage';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -49,7 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 openModal([overlay, servicesModal]);
             }
         }
-        //  закрытие модалки
+        if (target.parentNode.classList.contains('sertificate-document')) {
+            // открытие модалок
+            event.preventDefault();
+            showImage(target);
+        }
+        //  закрытие модалки 
         if (target.classList.contains('header-modal__close')) {
             closeModal([overlay, headerModal]);
         } else if (target.classList.contains('services-modal__close')) {
@@ -60,17 +66,29 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal([overlay, headerModal]);
             closeModal([overlay, servicesModal]);
         }
+        if (target.classList.contains('sertificate-in-modal__close')) {
+            closeModal([overlay]);
+        }
         // скрол to top
         if (target.classList.contains('smooth-scroll__img'))pageScroll();
     });
-
     document.addEventListener('input', event => {
         if (event.target.closest('#calc')) {
             calc();
         }
     });
-    // появление скрол to top
+    document.addEventListener('mouseover', event => {
+        if (event.target.parentNode.classList.contains('sertificate-document')) {
+            event.target.style.opacity = 1;
+        }
+    });
+    document.addEventListener('mouseout', event => {
+        if (event.target.parentNode.classList.contains('sertificate-document')) {
+            event.target.style = '';
+        }
+    });
     window.addEventListener('scroll', () => {
+        // появление скрол to top
         const offerY = offer.getBoundingClientRect().bottom;
 
         if (offerY < 0) {

@@ -1582,6 +1582,7 @@ input.error {
 }
 
 .overlay {
+  padding: 4%;
   display: none;
   position: fixed;
   top: 0;
@@ -1680,4 +1681,15 @@ input.error {
     width: 100%;
     max-width: 576px;
   }
+}
+
+.sertificate-in-modal{
+  position:relative;
+  width: 30%;
+  display: flex;
+}
+
+.sertificate-in-modal__close{
+  text-align: center;
+    vertical-align: middle;
 }
