@@ -6,7 +6,7 @@ const Type = document.getElementById('calc-type'),
 export const calc = () => {
     if (Number(Type.value) && Number(Material.value) && Number(Input.value)) {
         console.log('ku');
-        const result = Type.value * Material.value * Input.value * 1000;
+        const result = Math.floor(Type.value * Material.value * Input.value * 1000);
         Total.value = result;
         localStorage.setItem('calc', result);
     }
