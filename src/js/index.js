@@ -10,6 +10,7 @@
 import { closeModal, openModal } from './modal/modal';
 import { pageScroll, scrollHide } from './pageScroll/pageScroll';
 import { countTimer, addDays } from './timer/timer';
+import SliderCarousel from './carusel/carusel';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -17,8 +18,29 @@ document.addEventListener("DOMContentLoaded", () => {
         headerModal = document.querySelector('.header-modal'),
         servicesModal = document.querySelector('.services-modal');
 
+    // carousel
+    const carousel = new SliderCarousel({
+        main: '.benefits-inner',
+        wrap: '.benefits-wrap',
+        next: '.benefits__arrow--right',
+        prev: '.benefits__arrow--left',
+        slidesToShow: 3,
+        infinity: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                slidesToShow: 3
+            },
+            {
+                breakpoint: 576,
+                slidesToShow: 1
+            }],
+    });
+    carousel.init();
+
     // вызов функций
     scrollHide('none');
+
     // Timer
     // if new client set localStorage timer
     if (localStorage.startTimer === undefined) {
