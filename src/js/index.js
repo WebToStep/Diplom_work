@@ -12,7 +12,7 @@ import { pageScroll, scrollHide } from '../js/pageScroll/pageScroll';
 import { countTimer, addDays } from '../js/timer/timer';
 import { calc } from '../js/calc/calc';
 import { sendForm } from '../js/sendForm/sendForm';
-import {maskPhone} from '../js/plugins/maskPhone';
+import { maskPhone } from '../js/plugins/maskPhone';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
