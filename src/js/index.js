@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = event.target;
         const equality = el => el.trim().toLocaleLowerCase();
         if (target.classList.contains('fancyboxModal')) {
-            // открытие модалки
+            // открытие модалок
             event.preventDefault();
             if (equality(target.innerText) === equality('ЗАКАЗАТЬ ЗВОНОК!') ||
             equality(target.innerText) === equality('УЗНАТЬ СВОЮ СКИДКУ')) {
