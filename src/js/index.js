@@ -11,6 +11,8 @@ import { closeModal, openModal } from '../js/modal/modal';
 import { pageScroll, scrollHide } from '../js/pageScroll/pageScroll';
 import { countTimer, addDays } from '../js/timer/timer';
 import { calc } from '../js/calc/calc';
+import { sendForm } from '../js/sendForm/sendForm';
+import {maskPhone} from '../js/plugins/maskPhone';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -20,8 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // вызов функций
     scrollHide('none');
-    // Timer
-    // if new client set localStorage timer
+    sendForm();
+    maskPhone('phone');
+
+    // Таймер
+    // Если клиент впервые на сайте то добавляем в storage дату
     if (localStorage.startTimer === undefined) {
         // вместо еденицы нужно передать срок дней акции после того как клиент зашел на сайт
         localStorage.startTimer = addDays(new Date(), 3);
