@@ -7,9 +7,10 @@
 // import '../balkony.html';
 // import '../kuhni.html';
 
-import { closeModal, openModal } from './modal/modal';
-import { pageScroll, scrollHide } from './pageScroll/pageScroll';
-import { countTimer, addDays } from './timer/timer';
+import { closeModal, openModal } from '../js/modal/modal';
+import { pageScroll, scrollHide } from '../js/pageScroll/pageScroll';
+import { countTimer, addDays } from '../js/timer/timer';
+import { calc } from '../js/calc/calc';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -58,6 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target.classList.contains('smooth-scroll__img'))pageScroll();
     });
 
+    document.addEventListener('input', event => {
+        if (event.target.closest('#calc')) {
+            calc();
+        }
+    });
     // появление скрол to top
     window.addEventListener('scroll', () => {
         const offerY = offer.getBoundingClientRect().bottom;
