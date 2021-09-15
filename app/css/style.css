@@ -666,6 +666,7 @@ p.services-image_mobile {
   padding: 0px 20px;
 }
 .order-form .help-block {
+  text-align: center;
   font-size: 12px;
   line-height: 1.4;
   color: #546a76;
@@ -1071,6 +1072,7 @@ p.services-image_mobile {
   margin: 30px auto 0;
 }
 .box-modal .box-modal_body .help-block {
+  text-align: center;
   margin: 15px 0 0;
   font-size: 14px;
   color: #808080;
@@ -1084,6 +1086,7 @@ p.services-image_mobile {
   margin-bottom: 0;
 }
 .box-modal .box-modal_body .help-block {
+  text-align: center;
   font-size: 16px;
   line-height: 20px;
   color: #939393;

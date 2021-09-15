@@ -1,5 +1,6 @@
 export const openModal = el => el.forEach(element => {
     element.classList.add('show_block');
+    element.classList.add('show_block');
     element.classList.remove('hidden_block');
 });
 

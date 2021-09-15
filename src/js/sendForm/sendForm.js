@@ -58,10 +58,10 @@ export const sendForm = () => {
                     font-size: 1.5rem;
                     text-align: center;
                     color: red`;
-                  //   timer = setTimeout(() => {
-                  //       helpBlock.textContent = tempText;
-                  //       statusMessage.remove();
-                  //   }, 5000);
+                    timer = setTimeout(() => {
+                        helpBlock.textContent = tempText;
+                        statusMessage.remove();
+                    }, 5000);
                 } else if (!name.value.match(/[а-я a-z]{2,}/ig)) {
                     name.style.border = '1px solid red';
                     helpBlock.textContent = '';
@@ -71,10 +71,10 @@ export const sendForm = () => {
                        font-size: 1.5rem;
                        text-align: center;
                        color: red`;
-                  //   timer = setTimeout(() => {
-                  //       helpBlock.textContent = tempText;
-                  //       statusMessage.remove();
-                  //   }, 5000);
+                    timer = setTimeout(() => {
+                        helpBlock.textContent = tempText;
+                        statusMessage.remove();
+                    }, 5000);
                 } else if (!phone.value.match(/[0-9()-]{9}/)) {
                     phone.style.border = '1px solid red';
                     helpBlock.textContent = '';
@@ -84,14 +84,14 @@ export const sendForm = () => {
                         font-size: 1.5rem;
                         text-align: center;
                         color: red`;
-                  //   timer = setTimeout(() => {
-                  //       helpBlock.textContent = tempText;
-                  //       statusMessage.remove();
-                  //    }, 5000);
-                  } else {
-                     // statusMessage.textContent = '';
-                     statusMessage.remove();
-                  //   clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        helpBlock.textContent = tempText;
+                        statusMessage.remove();
+                    }, 5000);
+                } else {
+                    // statusMessage.textContent = '';
+                    statusMessage.remove();
+                    clearTimeout(timer);
                     statusMessage.style.cssText = `
                         font-size: 1.5rem;
                         text-align: center;
@@ -103,7 +103,7 @@ export const sendForm = () => {
 
             // формирование данных для отправки
             if (valuesCheckered()) {
-                helpBlock.textContent = '';
+                helpBlock.innerHTML = '';
                 helpBlock.append(statusMessage);
                 statusMessage.append(loader);
                 
@@ -128,10 +128,10 @@ export const sendForm = () => {
                     });
 
                 event.target.querySelectorAll('input').forEach(elem => elem.value = '');
-                 setTimeout(() => {
+                setTimeout(() => {
                     statusMessage.remove();
-                    helpBlock.innerHTML = tempText;
-                  }, 5000);
+                    helpBlock.innerHTML = 'Мы гарантируем 100% конфиденциальность. Ваша информация не будет распространяться.';
+                }, 5000);
             }
         });
     });
