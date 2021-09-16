@@ -76,6 +76,16 @@ module.exports = {
         { from: path.resolve(__dirname, 'src/css'), to: path.resolve(__dirname, 'app/css') }
       ]
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/favicon.ico'), to: path.resolve(__dirname, 'app/favicon.ico') }
+      ]
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/server.php'), to: path.resolve(__dirname, 'app/server.php') }
+      ]
+    }),
   ],
   // module: {
   //   rules: [
