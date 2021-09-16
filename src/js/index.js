@@ -10,7 +10,7 @@
 import { closeModal, openModal } from './modal/modal';
 import { pageScroll, scrollHide } from './pageScroll/pageScroll';
 import { countTimer, addDays } from './timer/timer';
-import SliderCarousel from './carusel/carusel';
+import { SliderCarousel, SliderCarousel2 } from './carusel/carusel';
 
 document.addEventListener("DOMContentLoaded", () => {
     const offer = document.getElementById('offer'),
@@ -37,6 +37,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }],
     });
     carousel.init();
+    const carousel2 = new SliderCarousel2({
+        main: '.services-inner',
+        wrap: '.services-wrap',
+        next: '.services__arrow--right',
+        prev: '.services__arrow--left',
+        slidesToShow: 2,
+        infinity: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                slidesToShow: 2
+            },
+            {
+                breakpoint: 576,
+                slidesToShow: 1
+            }],
+    });
+    carousel2.init();
 
     // вызов функций
     scrollHide('none');

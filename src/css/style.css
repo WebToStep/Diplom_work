@@ -1678,3 +1678,13 @@ input.error {
     max-width: 576px;
   }
 }
+.benefits__arrow{
+  position: absolute;
+  top: 30%;
+}
+.benefits__arrow--left{
+  left: -6px;
+}
+.benefits__arrow--right{
+  right: -6px;
+}
