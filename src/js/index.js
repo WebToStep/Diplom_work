@@ -77,12 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
             calc();
         }
     });
-    document.addEventListener('mouseover', event => {
+    window.addEventListener('mouseover', event => {
+        if (event.target.localName === 'html') return;
         if (event.target.parentNode.classList.contains('sertificate-document')) {
             event.target.style.opacity = 1;
         }
     });
-    document.addEventListener('mouseout', event => {
+    window.addEventListener('mouseout', event => {
+        if (event.target.localName === 'html') return;
         if (event.target.parentNode.classList.contains('sertificate-document')) {
             event.target.style = '';
         }
