@@ -23,13 +23,13 @@ class SliderCarousel {
             withSlide: Math.floor(100 / this.slidesToShow),
             infinity,
             maxPosition: this.slides.length - this.slidesToShow
-         };
-         this.responsive = responsive;
-      }
-      init() {
-         console.log('this.slidesToShow: ', this.slidesToShow);
-         console.log('withSlide: ', this.options.withSlide);
-         console.log('maxPosition: ', this.options.maxPosition);
+        };
+        this.responsive = responsive;
+    }
+    init() {
+        console.log('this.slidesToShow: ', this.slidesToShow);
+        console.log('withSlide: ', this.options.withSlide);
+        console.log('maxPosition: ', this.options.maxPosition);
         this.addGloClass();
         this.addStyle();
         if (this.prev && this.next) {
@@ -63,7 +63,7 @@ class SliderCarousel {
             display: flex !important;
             position: relative !important; 
             overflow: hidden !important;
-            width: 550px;
+            max-width: 550px;
             justify-content: center !important;
             flex-direction: row;
             margin: 0 auto;
@@ -87,6 +87,7 @@ class SliderCarousel {
                 justify-content: center !important;
                 flex: 0 0 ${this.options.withSlide}% !important;
                 margin: auto 0 !important;
+                max-width: 100% !important;
            }
        `;
 
